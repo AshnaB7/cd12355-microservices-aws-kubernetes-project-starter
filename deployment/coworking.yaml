@@ -19,7 +19,7 @@ metadata:
   labels:
     name: coworking
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       service: coworking
@@ -36,13 +36,13 @@ spec:
           httpGet:
             path: /health_check
             port: 5153
-          initialDelaySeconds: 5
+          initialDelaySeconds: 60
           timeoutSeconds: 2
         readinessProbe:
           httpGet:
             path: "/readiness_check"
             port: 5153
-          initialDelaySeconds: 5
+          initialDelaySeconds: 60
           timeoutSeconds: 5
         envFrom:
         - configMapRef:
